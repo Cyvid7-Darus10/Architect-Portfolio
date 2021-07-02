@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
+import { Button } from "./Button";
 
 const HeroSection = styled.section`
   height: 100vh;
@@ -35,6 +36,17 @@ const Hero = ({ slides }) => {
                   <HeroImage />
                   <HeroContent>
                     <h1>{slide.title}</h1>
+                    <h1>{slide.location}</h1>
+                    <Button
+                      to={slide.path}
+                      primary="true"
+                      css={`
+                        max-width: 150px;
+                      `}
+                    >
+                      {slide.label}
+                      <Arrow />
+                    </Button>
                   </HeroContent>
                 </HeroSlider>
               </HeroSlide>
