@@ -6,8 +6,9 @@ import { Button } from "./Button";
 import Bars from "../images/bars.svg";
 
 const Nav = styled.nav`
+  z-index: 10;
   height: 60px;
-  background: #50a5dc;
+  // background: #50a5dc;
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
