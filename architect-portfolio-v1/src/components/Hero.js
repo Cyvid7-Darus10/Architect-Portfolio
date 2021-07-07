@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled, { css } from "styled-components/macro";
 import { Button } from "./Button";
 import { IoMdArrowRoundForward } from "react-icons/io";
@@ -88,7 +88,9 @@ const HeroContent = styled.div`
   }
 `;
 
-const Arrow = styled(IoMdArrowRoundForward)``;
+const Arrow = styled(IoMdArrowRoundForward)`
+  margin-left: 0.5rem;
+`;
 
 const SliderButtons = styled.div`
   position: absolute;
@@ -103,7 +105,7 @@ const arrowButtons = css`
   height: 50px;
   color: #fff;
   cursor: pointer;
-  background: #000d1a;
+  background: #193c52;
   border-radius: 50px;
   padding: 10px;
   margin-right: 1rem;
@@ -124,6 +126,18 @@ const NextArrow = styled(IoArrowForward)`
 `;
 
 const Hero = ({ slides }) => {
+  const [current, setCurrent] = useState(0);
+  const length = slides.length;
+  const timeout = useRef(null);
+
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
+
   return (
     <div>
       <HeroSection>
@@ -131,29 +145,25 @@ const Hero = ({ slides }) => {
           {slides.map((slide, index) => {
             return (
               <HeroSlide key={index}>
-                <HeroSlider>
-                  <HeroImage src={slide.image} alt={slide.alt} />
-                  <HeroContent>
-                    <h1>{slide.title}</h1>
-                    <p>{slide.location}</p>
-                    <Button
-                      to={slide.path}
-                      primary="true"
-                      css={`
-                        max-width: 150px;
-                      `}
-                    >
-                      {slide.label}
-                      <Arrow />
-                    </Button>
-                  </HeroContent>
-                </HeroSlider>
+                {index === current && (
+                  <HeroSlider>
+                    <HeroImage src={slide.image} alt={slide.alt} />
+                    <HeroContent>
+                      <h1>{slide.title}</h1>
+                      <p>{slide.location}</p>
+                      <Button to={slide.path} primary="true">
+                        {slide.label}
+                        <Arrow />
+                      </Button>
+                    </HeroContent>
+                  </HeroSlider>
+                )}
               </HeroSlide>
             );
           })}
           <SliderButtons>
-            <PrevArrow />
-            <NextArrow />
+            <PrevArrow onClick={prevSlide} />
+            <NextArrow onClick={nextSlide} />
           </SliderButtons>
         </HeroWrapper>
       </HeroSection>

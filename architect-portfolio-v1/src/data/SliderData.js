@@ -36,12 +36,4 @@ export const SliderData = [
     image: DesignFour,
     alt: "Design",
   },
-  {
-    title: "Sample Name of project",
-    location: "Cebu, Talisay",
-    path: "/designs",
-    label: "View Design",
-    image: DesignOne,
-    alt: "Design",
-  },
 ];
