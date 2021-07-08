@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { menuData } from "../data/MenuData";
@@ -6,13 +6,19 @@ import { Button } from "./Button";
 import Bars from "../images/bars.svg";
 
 const Nav = styled.nav`
-  z-index: 10;
+  z-index: 100;
   height: 60px;
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
   position: fixed;
   width: 100%;
+  background: transparent;
+  transition: 0.7s;
+
+  &.active {
+    background: #27211f;
+  }
 `;
 
 const NavLink = css`
@@ -72,8 +78,20 @@ const NavBtn = styled.div`
 `;
 
 function Navbar({ toggle }) {
+  const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackground);
+
   return (
-    <Nav>
+    <Nav className={navbar ? "active" : ""}>
       <Logo to="/">SHEA UBALDO</Logo>
       <MenuBars onClick={toggle} />
       <NavMenu>

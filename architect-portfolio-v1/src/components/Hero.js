@@ -53,12 +53,19 @@ const HeroSlider = styled.div`
       rgba(0, 0, 0, 0.6) 100%
     );
   }
+
+  opacity: 0;
+  transition: 0.7s;
+
+  &.active {
+    opacity: 1;
+  }
 `;
 
 const HeroImage = styled.img`
   position: absolute;
   top: 0;
-  left: 00;
+  left: 0;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -127,28 +134,39 @@ const NextArrow = styled(IoArrowForward)`
 
 const Hero = ({ slides }) => {
   const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(1);
   const length = slides.length;
-  // const timeout = useRef(null);
+  const timeout = useRef(null);
 
-  // useEffect(() => {
-  //   const nextSlide = () => {
-  //     setCurrent((current) => (current === length - 1 ? 0 : current + 1));
-  //   };
-  //   timeout.current = setTimeout(nextSlide, 2000);
+  useEffect(() => {
+    const nextSlide = () => {
+      setCurrent((current) => (current === length - 1 ? 0 : current + 1));
+      setFade(0);
+      timeout.current = setTimeout(toggleFade, 100);
+    };
+    timeout.current = setTimeout(nextSlide, 3000);
 
-  //   return function () {
-  //     if (timeout.current) {
-  //       clearTimeout(timeout.current);
-  //     }
-  //   };
-  // }, [current, length]);
+    return function () {
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
+    };
+  }, [current, length]);
+
+  const toggleFade = () => {
+    setFade(1);
+  };
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
+    setFade(0);
+    timeout.current = setTimeout(toggleFade, 100);
   };
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
+    setFade(0);
+    timeout.current = setTimeout(toggleFade, 200);
   };
 
   if (!Array.isArray(slides) || slides.length <= 0) return null;
@@ -161,7 +179,7 @@ const Hero = ({ slides }) => {
             return (
               <HeroSlide key={index}>
                 {index === current && (
-                  <HeroSlider>
+                  <HeroSlider className={fade ? "active" : ""}>
                     <HeroImage src={slide.image} alt={slide.alt} />
                     <HeroContent>
                       <h1>{slide.title}</h1>

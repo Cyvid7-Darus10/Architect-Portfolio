@@ -66,7 +66,6 @@ const InfoSection = ({
   reverse,
   image,
 }) => {
-  console.log(reverse);
   return (
     <Section>
       <Container>
