@@ -71,11 +71,11 @@ const NavBtn = styled.div`
   }
 `;
 
-function Navbar() {
+function Navbar({ toggle }) {
   return (
     <Nav>
       <Logo to="/">SHEA UBALDO</Logo>
-      <MenuBars />
+      <MenuBars onClick={toggle} />
       <NavMenu>
         {menuData.map((item, index) => (
           <NavMenuLinks to={item.link} key={index}>
