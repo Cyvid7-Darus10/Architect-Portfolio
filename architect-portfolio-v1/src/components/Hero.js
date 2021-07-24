@@ -53,13 +53,6 @@ const HeroSlider = styled.div`
       rgba(0, 0, 0, 0.6) 100%
     );
   }
-
-  opacity: 0;
-  transition: 0.7s;
-
-  &.active {
-    opacity: 1;
-  }
 `;
 
 const HeroImage = styled.img`
@@ -69,6 +62,12 @@ const HeroImage = styled.img`
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+  opacity: 0.4;
+  transition: 0.7s;
+
+  &.active {
+    opacity: 1;
+  }
 `;
 
 const HeroContent = styled.div`
@@ -132,6 +131,8 @@ const NextArrow = styled(IoArrowForward)`
   ${arrowButtons}
 `;
 
+var stop = 0;
+
 const Hero = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const [fade, setFade] = useState(1);
@@ -140,11 +141,20 @@ const Hero = ({ slides }) => {
 
   useEffect(() => {
     const nextSlide = () => {
-      setCurrent((current) => (current === length - 1 ? 0 : current + 1));
-      setFade(0);
-      timeout.current = setTimeout(toggleFade, 100);
+      if (!stop) {
+        setCurrent((current) => (current === length - 1 ? 0 : current + 1));
+        setFade(0);
+        timeout.current = setTimeout(toggleFade, 50);
+      }
     };
-    timeout.current = setTimeout(nextSlide, 3000);
+
+    const toggleFade = () => {
+      setFade(1);
+    };
+
+    if (!stop) {
+      timeout.current = setTimeout(nextSlide, 2000);
+    }
 
     return function () {
       if (timeout.current) {
@@ -153,20 +163,14 @@ const Hero = ({ slides }) => {
     };
   }, [current, length]);
 
-  const toggleFade = () => {
-    setFade(1);
-  };
-
   const nextSlide = () => {
+    stop = 1;
     setCurrent(current === length - 1 ? 0 : current + 1);
-    setFade(0);
-    timeout.current = setTimeout(toggleFade, 100);
   };
 
   const prevSlide = () => {
+    stop = 1;
     setCurrent(current === 0 ? length - 1 : current - 1);
-    setFade(0);
-    timeout.current = setTimeout(toggleFade, 200);
   };
 
   if (!Array.isArray(slides) || slides.length <= 0) return null;
@@ -179,8 +183,12 @@ const Hero = ({ slides }) => {
             return (
               <HeroSlide key={index}>
                 {index === current && (
-                  <HeroSlider className={fade ? "active" : ""}>
-                    <HeroImage src={slide.image} alt={slide.alt} />
+                  <HeroSlider>
+                    <HeroImage
+                      src={slide.image}
+                      alt={slide.alt}
+                      className={fade ? "active" : ""}
+                    />
                     <HeroContent>
                       <h1>{slide.title}</h1>
                       <p>{slide.location}</p>

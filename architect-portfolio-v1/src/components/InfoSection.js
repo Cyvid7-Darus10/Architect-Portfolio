@@ -7,6 +7,7 @@ const Section = styled.section`
   height: 100%;
   padding: 4rem 0rem;
 `;
+
 const Container = styled.div`
   padding: 3rem calc((100vw - 1300px) / 2);
   display: grid;
@@ -17,6 +18,7 @@ const Container = styled.div`
     grid-template-columns: 1fr;
   }
 `;
+
 const ColumnLeft = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,7 +62,7 @@ const ColumnRight = styled.div`
 
 const InfoSection = ({
   heading,
-  parapgrahOne,
+  paragraphOne,
   paragraphTwo,
   buttonLabel,
   reverse,
@@ -71,7 +73,7 @@ const InfoSection = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <p>{parapgrahOne}</p>
+          <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
           <Button to="/home" primary={1}>
             {buttonLabel}

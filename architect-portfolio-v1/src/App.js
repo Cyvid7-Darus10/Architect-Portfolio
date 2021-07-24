@@ -5,7 +5,7 @@ import { SliderData } from "./data/SliderData";
 import GlobalStyle from "./GlobalStyle";
 import Dropdown from "./components/Dropdown";
 import InfoSection from "./components/InfoSection";
-import { infoDataOne } from "./data/InfoData";
+import { infoDataOne, infoDataTwo } from "./data/InfoData";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +20,7 @@ function App() {
       <Navbar toggle={toggle} />
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Hero slides={SliderData} />
+      <InfoSection {...infoDataTwo} />
       <InfoSection {...infoDataOne} />
     </>
   );
