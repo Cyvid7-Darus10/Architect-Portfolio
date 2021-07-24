@@ -3,7 +3,7 @@ import styled, { css } from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { menuData } from "../data/MenuData";
 import { Button } from "./Button";
-import Bars from "../images/bars.svg";
+import Bars from "../images/wave.gif";
 
 const Nav = styled.nav`
   z-index: 100;
@@ -38,18 +38,19 @@ const Logo = styled(Link)`
 
 const MenuBars = styled.i`
   display: none;
+  -webkit-tap-highlight-color: transparent;
 
   @media screen and (max-width: 768px) {
     display: block;
     background-image: url(${Bars});
     background-size: contain;
-    height: 40px;
-    width: 40px;
+    height: 26px;
+    width: 30px;
     cursor: pointer;
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-50%, 25%);
+    top: 14px;
+    right: 25px;
+    transform: scale(4.5);
   }
 `;
 
