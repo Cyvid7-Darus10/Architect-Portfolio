@@ -127,6 +127,7 @@ const arrowButtons = css`
 const PrevArrow = styled(IoArrowBack)`
   ${arrowButtons}
 `;
+
 const NextArrow = styled(IoArrowForward)`
   ${arrowButtons}
 `;

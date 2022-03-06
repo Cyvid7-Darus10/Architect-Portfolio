@@ -12,6 +12,7 @@ export const infoDataOne = {
   buttonLabel: "View Design",
   image: InteriorOne,
   reverse: true,
+  link: "sample_link1",
   delay: 100,
 };
 
@@ -24,5 +25,6 @@ export const infoDataTwo = {
   buttonLabel: "View Design",
   image: InteriorTwo,
   reverse: false,
+  link: "sample_link2",
   delay: 300,
 };

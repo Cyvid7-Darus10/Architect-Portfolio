@@ -5,7 +5,7 @@ import DesignFour from "../images/image-4.jpg";
 
 export const SliderData = [
   {
-    title: "Sample Name of project",
+    title: "Sample Name of project 1",
     location: "Cebu, Talisay",
     path: "/designs",
     label: "View Design",
@@ -13,24 +13,24 @@ export const SliderData = [
     alt: "Design",
   },
   {
-    title: "Sample Name of project",
-    location: "Cebu, Talisay",
+    title: "Sample Name of project 2",
+    location: "Location 1",
     path: "/designs",
     label: "View Design",
     image: DesignTwo,
     alt: "Design",
   },
   {
-    title: "Sample Name of project",
-    location: "Cebu, Talisay",
+    title: "Sample Name of project 3",
+    location: "Location 2",
     path: "/designs",
     label: "View Design",
     image: DesignThree,
     alt: "Design",
   },
   {
-    title: "Sample Name of project",
-    location: "Cebu, Talisay",
+    title: "Sample Name of project 4",
+    location: "Location 3",
     path: "/designs",
     label: "View Design",
     image: DesignFour,

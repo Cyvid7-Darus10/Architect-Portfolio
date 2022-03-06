@@ -25,7 +25,7 @@ const ColumnLeft = styled.div`
   justify-content: center;
   align-items: flex-start;
   line-height: 1.4;
-  padding 1rem 2rem;
+  padding: 1rem 2rem;
   order: ${({ reverse }) => (reverse ? "1" : "2")};
 
   h1 {
@@ -67,6 +67,7 @@ const InfoSection = ({
   buttonLabel,
   reverse,
   image,
+  link
 }) => {
   return (
     <Section>
@@ -75,7 +76,7 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/home" primary={1}>
+          <Button to={link} primary={1}>
             {buttonLabel}
           </Button>
         </ColumnLeft>
