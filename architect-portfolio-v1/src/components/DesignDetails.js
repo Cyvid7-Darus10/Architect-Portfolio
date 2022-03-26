@@ -36,6 +36,7 @@ function DesignDetails(props) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        size="lg"
       >
         <Modal.Header closeButton>
           <Modal.Title>Design</Modal.Title>
