@@ -2,6 +2,36 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
 
+const InfoSection = ({
+  heading,
+  paragraphOne,
+  paragraphTwo,
+  buttonLabel,
+  reverse,
+  image,
+  link
+}) => {
+  return (
+    <Section>
+      <Container>
+        <ColumnLeft>
+          <h1>{heading}</h1>
+          <p>{paragraphOne}</p>
+          <p>{paragraphTwo}</p>
+          <Button to={link} primary={1}>
+            {buttonLabel}
+          </Button>
+        </ColumnLeft>
+        <ColumnRight reverse={reverse}>
+          <img src={image} alt="design" />
+        </ColumnRight>
+      </Container>
+    </Section>
+  );
+};
+
+export default InfoSection;
+
 const Section = styled.section`
   width: 100%;
   height: 100%;
@@ -60,32 +90,3 @@ const ColumnRight = styled.div`
     }
 `;
 
-const InfoSection = ({
-  heading,
-  paragraphOne,
-  paragraphTwo,
-  buttonLabel,
-  reverse,
-  image,
-  link
-}) => {
-  return (
-    <Section>
-      <Container>
-        <ColumnLeft>
-          <h1>{heading}</h1>
-          <p>{paragraphOne}</p>
-          <p>{paragraphTwo}</p>
-          <Button to={link} primary={1}>
-            {buttonLabel}
-          </Button>
-        </ColumnLeft>
-        <ColumnRight reverse={reverse}>
-          <img src={image} alt="design" />
-        </ColumnRight>
-      </Container>
-    </Section>
-  );
-};
-
-export default InfoSection;

@@ -5,6 +5,40 @@ import Dropdown from "./Dropdown";
 import DesignFour from "../images/me.jpg";
 import { SocialIcon } from 'react-social-icons';
 
+function Contact() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <>
+        <Navbar toggle={toggle} />
+        <Dropdown isOpen={isOpen} toggle={toggle} />
+        <ContactWrapper>
+            <ContactContainer>
+                <ContactImage>
+                    <img src={DesignFour} alt="design" />
+                </ContactImage>
+                <InfoContainer>
+                    <p>
+                        I'm a 3rd year BS Architecture student studying at La Consolacion College Bacolod.
+                    </p>
+                    <SocialContainer>
+                        <SocialIcon url="http://www.linkedin.com/in/shea-lou" />
+                        <SocialIcon url="https://www.instagram.com/udream.idesign/" />
+                    </SocialContainer>
+                </InfoContainer>
+            </ContactContainer>
+        </ContactWrapper>
+        </>
+    );
+}
+
+export default Contact;
+
+
 const ContactWrapper = styled.div`
     background-color: #343434;
     width: 100vw;
@@ -85,36 +119,3 @@ const SocialContainer = styled.div`
         margin-left: 1rem;
     }
 `;
-
-function Contact() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggle = () => {
-        setIsOpen(!isOpen);
-    };
-
-    return (
-        <>
-        <Navbar toggle={toggle} />
-        <Dropdown isOpen={isOpen} toggle={toggle} />
-        <ContactWrapper>
-            <ContactContainer>
-                <ContactImage>
-                    <img src={DesignFour} alt="design" />
-                </ContactImage>
-                <InfoContainer>
-                    <p>
-                        I'm a 3rd year BS Architecture student studying at La Consolacion College Bacolod.
-                    </p>
-                    <SocialContainer>
-                        <SocialIcon url="http://www.linkedin.com/in/shea-lou" />
-                        <SocialIcon url="https://www.instagram.com/udream.idesign/" />
-                    </SocialContainer>
-                </InfoContainer>
-            </ContactContainer>
-        </ContactWrapper>
-        </>
-    );
-}
-
-export default Contact;

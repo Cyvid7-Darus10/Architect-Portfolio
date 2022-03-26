@@ -5,6 +5,32 @@ import { menuData } from "../data/MenuData";
 import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
+const Dropdown = ({ isOpen, toggle }) => {
+  return (
+    <DropdownContainer isOpen={isOpen} onClick={toggle}>
+      <Icon onClick={toggle}>
+        <CloseIcon />
+      </Icon>
+      <DropdownWrapper>
+        <DropdownMenu>
+          {menuData.map((item, index) => (
+            <DropdownLink to={item.link} key={index}>
+              {item.title}
+            </DropdownLink>
+          ))}
+        </DropdownMenu>
+        <BtnWrapper>
+          <Button primary="true" round="true" big="true" to="/contact">
+            Contact Us
+          </Button>
+        </BtnWrapper>
+      </DropdownWrapper>
+    </DropdownContainer>
+  );
+};
+
+export default Dropdown;
+
 const DropdownContainer = styled.div`
   position: fixed;
   z-index: 999;
@@ -47,6 +73,7 @@ const DropdownMenu = styled.div`
     grid-template-rows: repeat(4, 60px);
   }
 `;
+
 const DropdownLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -63,33 +90,8 @@ const DropdownLink = styled(Link)`
     transfor
   }
 `;
+
 const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
-
-const Dropdown = ({ isOpen, toggle }) => {
-  return (
-    <DropdownContainer isOpen={isOpen} onClick={toggle}>
-      <Icon onClick={toggle}>
-        <CloseIcon />
-      </Icon>
-      <DropdownWrapper>
-        <DropdownMenu>
-          {menuData.map((item, index) => (
-            <DropdownLink to={item.link} key={index}>
-              {item.title}
-            </DropdownLink>
-          ))}
-        </DropdownMenu>
-        <BtnWrapper>
-          <Button primary="true" round="true" big="true" to="/contact">
-            Contact Us
-          </Button>
-        </BtnWrapper>
-      </DropdownWrapper>
-    </DropdownContainer>
-  );
-};
-
-export default Dropdown;

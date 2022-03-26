@@ -5,6 +5,41 @@ import { menuData } from "../data/MenuData";
 import { Button } from "./Button";
 import Bars from "../images/wave.gif";
 
+function Navbar({ toggle }) {
+  const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackground);
+
+  return (
+    <Nav className={navbar ? "active" : ""}>
+      <Logo to="/">SHEA UBALDO</Logo>
+      <MenuBars onClick={toggle} />
+      <NavMenu>
+        {menuData.map((item, index) => (
+          <NavMenuLinks to={item.link} key={index}>
+            {item.title}
+          </NavMenuLinks>
+        ))}
+      </NavMenu>
+      <NavBtn>
+        <Button to="/contact" primary="true">
+          Contact Me
+        </Button>
+      </NavBtn>
+    </Nav>
+  );
+}
+
+export default Navbar;
+
 const Nav = styled.nav`
   z-index: 100;
   height: 60px;
@@ -77,38 +112,3 @@ const NavBtn = styled.div`
     display: none;
   }
 `;
-
-function Navbar({ toggle }) {
-  const [navbar, setNavbar] = useState(false);
-
-  const changeBackground = () => {
-    if (window.scrollY >= 80) {
-      setNavbar(true);
-    } else {
-      setNavbar(false);
-    }
-  };
-
-  window.addEventListener("scroll", changeBackground);
-
-  return (
-    <Nav className={navbar ? "active" : ""}>
-      <Logo to="/">SHEA UBALDO</Logo>
-      <MenuBars onClick={toggle} />
-      <NavMenu>
-        {menuData.map((item, index) => (
-          <NavMenuLinks to={item.link} key={index}>
-            {item.title}
-          </NavMenuLinks>
-        ))}
-      </NavMenu>
-      <NavBtn>
-        <Button to="/contact" primary="true">
-          Contact Me
-        </Button>
-      </NavBtn>
-    </Nav>
-  );
-}
-
-export default Navbar;

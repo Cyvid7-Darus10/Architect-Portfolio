@@ -4,6 +4,89 @@ import { Button } from "./Button";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 
+var stop = 0;
+
+const Hero = ({ slides }) => {
+  const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(1);
+  const length = slides.length;
+  const timeout = useRef(null);
+
+  useEffect(() => {
+    const nextSlide = () => {
+      if (!stop) {
+        setCurrent((current) => (current === length - 1 ? 0 : current + 1));
+        setFade(0);
+        timeout.current = setTimeout(toggleFade, 50);
+      }
+    };
+
+    const toggleFade = () => {
+      setFade(1);
+    };
+
+    if (!stop) {
+      timeout.current = setTimeout(nextSlide, 2000);
+    }
+
+    return function () {
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
+    };
+  }, [current, length]);
+
+  const nextSlide = () => {
+    stop = 1;
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+
+  const prevSlide = () => {
+    stop = 1;
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
+
+  if (!Array.isArray(slides) || slides.length <= 0) return null;
+
+  return (
+    <div>
+      <HeroSection>
+        <HeroWrapper>
+          {slides.map((slide, index) => {
+            return (
+              <HeroSlide key={index}>
+                {index === current && (
+                  <HeroSlider>
+                    <HeroImage
+                      src={slide.image}
+                      alt={slide.alt}
+                      className={fade ? "active" : ""}
+                    />
+                    <HeroContent>
+                      <h1>{slide.title}</h1>
+                      <p>{slide.location}</p>
+                      <Button to={slide.path} primary="true">
+                        {slide.label}
+                        <Arrow />
+                      </Button>
+                    </HeroContent>
+                  </HeroSlider>
+                )}
+              </HeroSlide>
+            );
+          })}
+          <SliderButtons>
+            <PrevArrow onClick={prevSlide} />
+            <NextArrow onClick={nextSlide} />
+          </SliderButtons>
+        </HeroWrapper>
+      </HeroSection>
+    </div>
+  );
+};
+
+export default Hero;
+
 const HeroSection = styled.section`
   height: 100vh;
   max-height: 1100px;
@@ -131,86 +214,3 @@ const PrevArrow = styled(IoArrowBack)`
 const NextArrow = styled(IoArrowForward)`
   ${arrowButtons}
 `;
-
-var stop = 0;
-
-const Hero = ({ slides }) => {
-  const [current, setCurrent] = useState(0);
-  const [fade, setFade] = useState(1);
-  const length = slides.length;
-  const timeout = useRef(null);
-
-  useEffect(() => {
-    const nextSlide = () => {
-      if (!stop) {
-        setCurrent((current) => (current === length - 1 ? 0 : current + 1));
-        setFade(0);
-        timeout.current = setTimeout(toggleFade, 50);
-      }
-    };
-
-    const toggleFade = () => {
-      setFade(1);
-    };
-
-    if (!stop) {
-      timeout.current = setTimeout(nextSlide, 2000);
-    }
-
-    return function () {
-      if (timeout.current) {
-        clearTimeout(timeout.current);
-      }
-    };
-  }, [current, length]);
-
-  const nextSlide = () => {
-    stop = 1;
-    setCurrent(current === length - 1 ? 0 : current + 1);
-  };
-
-  const prevSlide = () => {
-    stop = 1;
-    setCurrent(current === 0 ? length - 1 : current - 1);
-  };
-
-  if (!Array.isArray(slides) || slides.length <= 0) return null;
-
-  return (
-    <div>
-      <HeroSection>
-        <HeroWrapper>
-          {slides.map((slide, index) => {
-            return (
-              <HeroSlide key={index}>
-                {index === current && (
-                  <HeroSlider>
-                    <HeroImage
-                      src={slide.image}
-                      alt={slide.alt}
-                      className={fade ? "active" : ""}
-                    />
-                    <HeroContent>
-                      <h1>{slide.title}</h1>
-                      <p>{slide.location}</p>
-                      <Button to={slide.path} primary="true">
-                        {slide.label}
-                        <Arrow />
-                      </Button>
-                    </HeroContent>
-                  </HeroSlider>
-                )}
-              </HeroSlide>
-            );
-          })}
-          <SliderButtons>
-            <PrevArrow onClick={prevSlide} />
-            <NextArrow onClick={nextSlide} />
-          </SliderButtons>
-        </HeroWrapper>
-      </HeroSection>
-    </div>
-  );
-};
-
-export default Hero;
