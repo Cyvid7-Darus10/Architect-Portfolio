@@ -65,7 +65,13 @@ const Hero = ({ slides }) => {
                     <HeroContent>
                       <h1>{slide.title}</h1>
                       <p>{slide.location}</p>
-                      <Button to={slide.path} primary="true">
+                      <Button           
+                        to={{
+                          pathname: "/designs_details",
+                          details: slide.detail
+                        }} 
+                        primary="true"
+                      >
                         {slide.label}
                         <Arrow />
                       </Button>

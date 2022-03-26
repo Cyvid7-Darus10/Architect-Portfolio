@@ -1,39 +1,36 @@
-import DesignOne from "../images/image-1.jpg";
-import DesignTwo from "../images/image-2.jpg";
-import DesignThree from "../images/image-3.jpg";
-import DesignFour from "../images/image-4.jpg";
+import {detail1, detail2, detail3, detail4} from "../data/InfoData";
 
 export const SliderData = [
   {
     title: "Sample Name of project 1",
     location: "Cebu, Talisay",
-    path: "/designs",
     label: "View Design",
-    image: DesignOne,
+    image: detail1.album[0],
+    detail: detail1,
     alt: "Design",
   },
   {
     title: "Sample Name of project 2",
     location: "Location 1",
-    path: "/designs",
     label: "View Design",
-    image: DesignTwo,
+    image: detail2.album[0],
+    detail: detail2,
     alt: "Design",
   },
   {
     title: "Sample Name of project 3",
     location: "Location 2",
-    path: "/designs",
     label: "View Design",
-    image: DesignThree,
+    image: detail3.album[0],
+    detail: detail3,
     alt: "Design",
   },
   {
     title: "Sample Name of project 4",
     location: "Location 3",
-    path: "/designs",
     label: "View Design",
-    image: DesignFour,
+    image: detail4.album[0],
+    detail: detail4,
     alt: "Design",
   },
 ];

@@ -1,5 +1,4 @@
 export const menuData = [
-  { title: "About", link: "/about" },
+  { title: "About", link: "/designs_details" },
   { title: "Designs", link: "/designs" },
-  // { title: "Pricing", link: "/price" },
 ];
