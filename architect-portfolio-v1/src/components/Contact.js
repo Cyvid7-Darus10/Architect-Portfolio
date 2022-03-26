@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components/macro";
+import styled from "styled-components/macro";
 import Navbar from "./Navbar";
 import Dropdown from "./Dropdown";
 import DesignFour from "../images/image-4.jpg";

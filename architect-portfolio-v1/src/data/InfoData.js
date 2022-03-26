@@ -1,7 +1,5 @@
 import InteriorOne from "../images/interior-1.jpg";
 import InteriorTwo from "../images/interior-2.jpg";
-import InteriorThree from "../images/interior-3.jpg";
-import InteriorFour from "../images/interior-4.jpg";
 
 export const infoDataOne = {
   heading: "Old Design",
