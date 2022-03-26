@@ -17,7 +17,7 @@ export const infoDataOne = {
   paragraphtwo:
     "Esse velit do est minim fugiat enim do aliquip laboris tempor officia et nulla.",
   buttonlabel: "View Design",
-  image: BinAlbum.bin1,
+  image: BinAlbum[0],
   reverse: 1,
   link: "designs_details",
   details: detail1,
@@ -38,7 +38,7 @@ export const infoDataTwo = {
   paragraphtwo:
     "Esse vet minim fugiat enim do aliquip laboris tempor officia et nulla.",
   buttonlabel: "View Design",
-  image: TalisayAlbum.talisay1,
+  image: TalisayAlbum[0],
   reverse: 0,
   link: "designs_details",
   details: detail2,
@@ -59,10 +59,10 @@ export const infoDataThree = {
   paragraphtwo:
     "Esse vet minim fugiat enim do aliquip laboris tempor officia et nulla.",
   buttonlabel: "View Design",
-  image: BtechAlbum.btech1,
+  image: BtechAlbum[0],
   reverse: 0,
   link: "designs_details",
-  details: detail2,
+  details: detail3,
   delay: 300,
 };
 
@@ -81,10 +81,10 @@ export const infoDataFour = {
   paragraphtwo:
     "Esse vet minim fugiat enim do aliquip laboris tempor officia et nulla.",
   buttonlabel: "View Design",
-  image: RowAlbum.row1,
+  image: RowAlbum[0],
   reverse: 1,
   link: "designs_details",
-  details: detail2,
+  details: detail4,
   delay: 300,
 };
 

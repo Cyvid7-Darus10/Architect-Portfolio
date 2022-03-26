@@ -12,11 +12,11 @@ const InfoSection = ({
   details,
   link
 }) => {
-  
+  console.log(reverse);
   return (
     <Section>
       <Container>
-        <ColumnLeft>
+        <ColumnLeft className={reverse ? "align-end" : ""} >
           <h1>{heading}</h1>
           <p>{paragraphone}</p>
           <p>{paragraphtwo}</p>
@@ -42,7 +42,6 @@ export default InfoSection;
 
 const Section = styled.section`
   width: 100%;
-  height: 100%;
   padding: 4rem 0rem;
 `;
 
@@ -50,7 +49,7 @@ const Container = styled.div`
   padding: 3rem calc((100vw - 1300px) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 800px;
+  grid-template-rows: 200px;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -61,7 +60,6 @@ const ColumnLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   line-height: 1.4;
   padding: 1rem 2rem;
   order: ${({ reverse }) => (reverse ? "1" : "2")};
@@ -73,7 +71,16 @@ const ColumnLeft = styled.div`
 
   p {
     margin-bottom: 2rem;
-    }
+  }
+
+  @media screen and (max-width: 768px) {
+    align-items: center !important;
+
+  }
+
+  &.align-end {
+    align-items: flex-end;
+  }
 `;
 
 const ColumnRight = styled.div`
@@ -84,7 +91,7 @@ const ColumnRight = styled.div`
     align-items: center;
 
     @media screen and (max-width: 768px){
-        order: ${({ reverse }) => (reverse ? "2" : "1")};
+        order: 1;
     }
 
     img {
