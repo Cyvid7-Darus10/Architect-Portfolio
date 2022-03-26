@@ -6,14 +6,11 @@ import DesignFour from "../images/image-4.jpg";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-const DesignDetails = ({
-  heading,
-  paragraphOne,
-  paragraphTwo,
-  buttonLabel,
-  reverse,
-  images
-}) => {
+function DesignDetails(props) {
+  const details = props.location.details;
+
+  console.log(details)
+  
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -21,45 +18,45 @@ const DesignDetails = ({
   };
 
   return (
-      <>
-      <Navbar toggle={toggle} />
+    <>
+    <Navbar toggle={toggle} />
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <DesignWrapper>
-          <DesignContainer>
-                <CarouselProvider
-                naturalSlideWidth={100}
-                naturalSlideHeight={125}
-                totalSlides={3}
-                >
-                <Slider>
-                <Slide index={0}>I am the first Slide.</Slide>
-                <Slide index={1}>I am the second Slide.</Slide>
-                <Slide index={2}>I am the third Slide.</Slide>
-                </Slider>
-                <ButtonBack>Back</ButtonBack>
-                <ButtonNext>Next</ButtonNext>
-            </CarouselProvider>
-          </DesignContainer>
+        <DesignContainer>
+            <CarouselProvider
+              naturalSlideWidth={100}
+              naturalSlideHeight={125}
+              totalSlides={3}
+              >
+              <Slider>
+              <Slide index={0}>I am the first Slide.</Slide>
+              <Slide index={1}>I am the second Slide.</Slide>
+              <Slide index={2}>I am the third Slide.</Slide>
+              </Slider>
+              <ButtonBack>Back</ButtonBack>
+              <ButtonNext>Next</ButtonNext>
+          </CarouselProvider>
+        </DesignContainer>
       </DesignWrapper>
-      </>
+    </>
   );
 };
 
 export default DesignDetails;
 
 const DesignWrapper = styled.div`
-    background-color: #343434;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    positon: relative;
+  background-color: #343434;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  positon: relative;
 
-    @media screen and (max-width: 768px) {
-        overflow: none;
-    }
+  @media screen and (max-width: 768px) {
+      overflow: none;
+  }
 `;
 
 const DesignContainer = styled.div`
