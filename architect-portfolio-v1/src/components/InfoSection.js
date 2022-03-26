@@ -4,22 +4,30 @@ import { Button } from "./Button";
 
 const InfoSection = ({
   heading,
-  paragraphOne,
-  paragraphTwo,
-  buttonLabel,
+  paragraphone,
+  paragraphtwo,
+  buttonlabel,
   reverse,
   image,
+  details,
   link
 }) => {
+  
   return (
     <Section>
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <p>{paragraphOne}</p>
-          <p>{paragraphTwo}</p>
-          <Button to={link} primary={1}>
-            {buttonLabel}
+          <p>{paragraphone}</p>
+          <p>{paragraphtwo}</p>
+          <Button
+            to={{
+              pathname: link,
+              details: details
+            }}
+            primary={1}
+          >
+            {buttonlabel}
           </Button>
         </ColumnLeft>
         <ColumnRight reverse={reverse}>
