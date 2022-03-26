@@ -4,7 +4,7 @@ import Hero from "./Hero";
 import { SliderData } from "../data/SliderData";
 import Dropdown from "./Dropdown";
 import InfoSection from "./InfoSection";
-import { infoDataOne, infoDataTwo } from "../data/InfoData";
+import { infoDataOne, infoDataTwo, infoDataThree, infoDataFour } from "../data/InfoData";
 
 
 function Home() {
@@ -21,8 +21,8 @@ function Home() {
       <Hero slides={SliderData} />
       <InfoSection {...infoDataTwo} />
       <InfoSection {...infoDataOne} />
-      <InfoSection {...infoDataOne} />
-      <InfoSection {...infoDataTwo} />
+      <InfoSection {...infoDataThree} />
+      <InfoSection {...infoDataFour} />
     </>
   );
 }
