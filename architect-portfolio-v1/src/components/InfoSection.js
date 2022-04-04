@@ -12,7 +12,6 @@ const InfoSection = ({
   details,
   link
 }) => {
-  console.log(reverse);
   return (
     <Section>
       <Container>
